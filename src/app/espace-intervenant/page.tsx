@@ -8,6 +8,7 @@ import { Briefcase, Calendar, Euro, Clock, ChevronRight, AlertCircle } from "luc
 
 export const metadata = { title: "Tableau de bord — Espace Intervenant" };
 
+export const dynamic = "force-dynamic";
 export default async function IntervenantDashboard() {
   const { userId } = await auth();
 

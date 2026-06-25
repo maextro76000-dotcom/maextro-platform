@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import {
   LayoutDashboard, User, Calendar, Briefcase, FileText, Settings,
   Building2, Users, CalendarDays, Receipt, Menu, X, ChevronRight,
-  BarChart3, UserCheck, MapPin, Clock, CreditCard, Globe
+  BarChart3, UserCheck, Clock, CreditCard, Globe
 } from "lucide-react";
 
 type NavItem = { label: string; href: string; icon: React.ReactNode };
@@ -87,13 +87,17 @@ const labelMap: Record<DashboardType, string> = {
   admin: "Administration",
 };
 
-export default function DashboardLayout({ children, type, title }: DashboardLayoutProps) {
-  const pathname = usePathname();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+interface SidebarProps {
+  type: DashboardType;
+  pathname: string;
+  onClose: () => void;
+}
+
+function Sidebar({ type, pathname, onClose }: SidebarProps) {
   const nav = navMap[type];
   const colors = colorMap[type];
 
-  const Sidebar = () => (
+  return (
     <aside className={cn("flex flex-col h-full w-64", colors.bg)}>
       {/* Logo */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
@@ -101,7 +105,7 @@ export default function DashboardLayout({ children, type, title }: DashboardLayo
           <span className="font-serif text-xl font-bold text-white">Maextro</span>
         </Link>
         <button
-          onClick={() => setSidebarOpen(false)}
+          onClick={onClose}
           className="lg:hidden text-white/60 hover:text-white"
         >
           <X size={20} />
@@ -123,7 +127,7 @@ export default function DashboardLayout({ children, type, title }: DashboardLayo
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => setSidebarOpen(false)}
+              onClick={onClose}
               className={cn(
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150",
                 isActive ? colors.active : cn(colors.text, colors.hover)
@@ -149,13 +153,18 @@ export default function DashboardLayout({ children, type, title }: DashboardLayo
       </div>
     </aside>
   );
+}
+
+export default function DashboardLayout({ children, type, title }: DashboardLayoutProps) {
+  const pathname = usePathname();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* Sidebar desktop */}
       <div className="hidden lg:flex lg:flex-shrink-0">
         <div className="w-64">
-          <Sidebar />
+          <Sidebar type={type} pathname={pathname} onClose={() => setSidebarOpen(false)} />
         </div>
       </div>
 
@@ -164,7 +173,7 @@ export default function DashboardLayout({ children, type, title }: DashboardLayo
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
           <div className="absolute left-0 top-0 bottom-0 w-64">
-            <Sidebar />
+            <Sidebar type={type} pathname={pathname} onClose={() => setSidebarOpen(false)} />
           </div>
         </div>
       )}

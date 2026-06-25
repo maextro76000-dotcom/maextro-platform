@@ -1,8 +1,6 @@
 import { db } from "@/db";
-import { intervenants } from "@/db/schema";
-import { eq, like, or } from "drizzle-orm";
 import Link from "next/link";
-import { Users, CheckCircle2, XCircle, Clock, ChevronRight, Search } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export const metadata = { title: "Intervenants — Admin Maextro" };
 
@@ -19,17 +17,13 @@ const statutLabels: Record<string, string> = {
   rejete: "Rejeté",
 };
 
+export const dynamic = "force-dynamic";
 export default async function AdminIntervenantsPage({
   searchParams,
 }: {
   searchParams: Promise<{ q?: string; statut?: string }>;
 }) {
   const { q, statut } = await searchParams;
-
-  let query = db.query.intervenants.findMany({
-    orderBy: (i, { desc }) => [desc(i.createdAt)],
-    with: { missions: true },
-  });
 
   const tous = await db.query.intervenants.findMany({
     orderBy: (i, { desc }) => [desc(i.createdAt)],

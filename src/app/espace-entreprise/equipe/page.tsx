@@ -6,6 +6,7 @@ import EquipeClient from "./EquipeClient";
 
 export const metadata = { title: "Équipe & Contacts — Espace Entreprise" };
 
+export const dynamic = "force-dynamic";
 export default async function EquipePage() {
   const { orgId } = await auth();
   const entreprise = orgId

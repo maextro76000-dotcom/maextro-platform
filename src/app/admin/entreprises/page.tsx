@@ -4,6 +4,7 @@ import { Building2, ChevronRight } from "lucide-react";
 
 export const metadata = { title: "Entreprises / Clients — Admin Maextro" };
 
+export const dynamic = "force-dynamic";
 export default async function AdminEntreprisesPage() {
   const tous = await db.query.entreprises.findMany({
     orderBy: (e, { desc }) => [desc(e.createdAt)],

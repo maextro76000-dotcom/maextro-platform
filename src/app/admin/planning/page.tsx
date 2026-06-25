@@ -5,6 +5,7 @@ import { Calendar, MapPin, Users, Building2 } from "lucide-react";
 
 export const metadata = { title: "Planning global — Admin Maextro" };
 
+export const dynamic = "force-dynamic";
 export default async function AdminPlanningPage() {
   const tous = await db.query.evenements.findMany({
     orderBy: (e, { asc }) => [asc(e.dateDebut)],

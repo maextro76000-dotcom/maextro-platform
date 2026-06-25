@@ -10,6 +10,7 @@ function formatEuros(cents: number) {
   return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(cents / 100);
 }
 
+export const dynamic = "force-dynamic";
 export default async function AdminDashboard() {
   const [
     totalIntervenants,

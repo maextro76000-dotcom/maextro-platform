@@ -6,6 +6,7 @@ import MissionsClient from "./MissionsClient";
 
 export const metadata = { title: "Mes Missions — Espace Intervenant" };
 
+export const dynamic = "force-dynamic";
 export default async function MissionsPage() {
   const { userId } = await auth();
   const intervenant = await db.query.intervenants.findFirst({

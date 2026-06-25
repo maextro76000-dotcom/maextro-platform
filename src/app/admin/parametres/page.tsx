@@ -4,6 +4,7 @@ import ParametresPlatformeClient from "./ParametresPlatformeClient";
 
 export const metadata = { title: "Paramètres plateforme — Admin Maextro" };
 
+export const dynamic = "force-dynamic";
 export default async function AdminParametresPage() {
   const [tousPostes, toutesZones, grille] = await Promise.all([
     db.query.postes.findMany({ orderBy: (p, { asc }) => [asc(p.ordre)] }),

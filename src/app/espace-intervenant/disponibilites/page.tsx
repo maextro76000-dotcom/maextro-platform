@@ -6,6 +6,7 @@ import DisponibilitesClient from "./DisponibilitesClient";
 
 export const metadata = { title: "Disponibilités & Planning — Espace Intervenant" };
 
+export const dynamic = "force-dynamic";
 export default async function DisponibilitesPage() {
   const { userId } = await auth();
   const intervenant = await db.query.intervenants.findFirst({

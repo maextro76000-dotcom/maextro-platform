@@ -6,6 +6,7 @@ import ParametresClient from "./ParametresClient";
 
 export const metadata = { title: "Paramètres — Espace Intervenant" };
 
+export const dynamic = "force-dynamic";
 export default async function ParametresIntervenantPage() {
   const { userId } = await auth();
   const user = await currentUser();

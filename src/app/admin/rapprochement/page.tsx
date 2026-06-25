@@ -7,6 +7,7 @@ import RapprochementActions from "./RapprochementActions";
 
 export const metadata = { title: "Rapprochement des heures — Admin Maextro" };
 
+export const dynamic = "force-dynamic";
 export default async function RapprochementPage({
   searchParams,
 }: {

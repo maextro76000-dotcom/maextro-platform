@@ -6,6 +6,7 @@ import ProfilEntrepriseForm from "./ProfilEntrepriseForm";
 
 export const metadata = { title: "Profil Entreprise — Espace Entreprise" };
 
+export const dynamic = "force-dynamic";
 export default async function ProfilEntreprisePage() {
   const { orgId } = await auth();
   const entreprise = await db.query.entreprises.findFirst({

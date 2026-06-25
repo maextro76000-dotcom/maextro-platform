@@ -6,6 +6,7 @@ import PlanningClient from "./PlanningClient";
 
 export const metadata = { title: "Planning — Espace Entreprise" };
 
+export const dynamic = "force-dynamic";
 export default async function PlanningEntreprisePage() {
   const { orgId } = await auth();
   const entreprise = await db.query.entreprises.findFirst({

@@ -16,6 +16,7 @@ const statutLabels: Record<string, string> = {
   brouillon: "Brouillon", publie: "Publié", en_cours: "En cours", termine: "Terminé", annule: "Annulé",
 };
 
+export const dynamic = "force-dynamic";
 export default async function AdminEvenementsPage({ searchParams }: { searchParams: Promise<{ statut?: string }> }) {
   const { statut } = await searchParams;
 

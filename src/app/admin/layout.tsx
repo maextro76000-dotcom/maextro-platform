@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import AdminLayout from "@/components/layout/AdminLayout";
 
+export const dynamic = "force-dynamic";
 export default async function EspaceAdminLayout({ children }: { children: React.ReactNode }) {
   const { userId, sessionClaims } = await auth();
   if (!userId) redirect("/connexion");

@@ -23,6 +23,7 @@ const statutLabels: Record<string, string> = {
   annule: "Annulé",
 };
 
+export const dynamic = "force-dynamic";
 export default async function EvenementsPage() {
   const { orgId } = await auth();
   const entreprise = await db.query.entreprises.findFirst({

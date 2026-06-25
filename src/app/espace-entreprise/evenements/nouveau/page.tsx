@@ -4,6 +4,7 @@ import NouvelEvenementForm from "./NouvelEvenementForm";
 
 export const metadata = { title: "Nouvel Événement — Espace Entreprise" };
 
+export const dynamic = "force-dynamic";
 export default async function NouvelEvenementPage() {
   const tousPostes = await db.query.postes.findMany({
     orderBy: (p, { asc }) => [asc(p.ordre)],

@@ -25,6 +25,7 @@ const statutLabels: Record<string, string> = {
   annule: "Annulée",
 };
 
+export const dynamic = "force-dynamic";
 export default async function AdminFacturationPage({
   searchParams,
 }: {
