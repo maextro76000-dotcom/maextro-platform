@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  --color-gold-50: oklch(97% 0.02 85);
+  --color-gold-100: oklch(93% 0.05 85);
+  --color-gold-200: oklch(87% 0.09 82);
+  --color-gold-300: oklch(80% 0.13 78);
+  --color-gold-400: oklch(73% 0.16 74);
+  --color-gold-500: oklch(65% 0.17 72);
+  --color-gold-600: oklch(57% 0.15 70);
+  --color-gold-700: oklch(48% 0.12 68);
+  --color-gold-800: oklch(38% 0.09 66);
+  --color-gold-900: oklch(28% 0.06 64);
+
+  --color-maextro-dark: oklch(12% 0.01 240);
+  --color-maextro-charcoal: oklch(20% 0.01 240);
+  --color-maextro-gold: oklch(65% 0.17 72);
+  --color-maextro-gold-light: oklch(80% 0.13 78);
+  --color-maextro-cream: oklch(97% 0.02 85);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #ffffff; color: #111827; font-family: var(--font-sans); }
+  h1,h2,h3,h4,h5,h6 { font-family: var(--font-serif); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
+.animate-marquee { animation: marquee 30s linear infinite; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.animate-fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.23,1,0.32,1) both; }
